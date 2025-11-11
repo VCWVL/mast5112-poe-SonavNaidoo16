@@ -10,9 +10,9 @@ import {
     Animated,
 } from "react-native";
 import { useLocalSearchParams, useRouter } from "expo-router";
-import { Dish } from "./types"; // Imported types
+import { Dish } from "./types"; 
 
-// --- Animated Button Component ---
+// --- Animated Button Component (Unchanged) ---
 const AnimatedButton: React.FC<{
     onPress: () => void;
     title: string;
@@ -52,18 +52,19 @@ const AnimatedButton: React.FC<{
 
 // --- Component to display each dish item with a remove button ---
 const RemovableMenuItem: React.FC<{
-    dish: Dish; // Uses imported Dish type
+    dish: Dish; 
     onRemove: (id: string) => void;
 }> = ({ dish, onRemove }) => {
     const fadeAnim = useRef(new Animated.Value(0)).current;
 
+    // FIX: Added 'fadeAnim' to the dependency array.
     useEffect(() => {
         Animated.timing(fadeAnim, {
             toValue: 1,
             duration: 400,
             useNativeDriver: true,
         }).start();
-    }, []);
+    }, [fadeAnim]); // <-- FIXED
 
     return (
         <Animated.View style={[removeStyles.menuItemContainer, { opacity: fadeAnim }]}>
@@ -105,13 +106,14 @@ export default function RemoveDishScreen() {
 
     // Screen fade-in animation on mount
     const screenFade = useRef(new Animated.Value(0)).current;
+    // FIX: Added 'screenFade' to the dependency array.
     useEffect(() => {
         Animated.timing(screenFade, {
             toValue: 1,
             duration: 800,
             useNativeDriver: true,
         }).start();
-    }, []);
+    }, [screenFade]); // <-- FIXED
 
     // Function to remove a dish from the list
     const handleRemoveDish = (idToRemove: string) => {
@@ -178,7 +180,7 @@ export default function RemoveDishScreen() {
     );
 }
 
-// --- Styles for the RemoveDishScreen and Components ---
+// --- Styles for the RemoveDishScreen and Components (Unchanged) ---
 const removeStyles = StyleSheet.create({
     background: { flex: 1, resizeMode: "cover" },
     overlay: { ...StyleSheet.absoluteFillObject, backgroundColor: "rgba(0,0,0,0.7)" },

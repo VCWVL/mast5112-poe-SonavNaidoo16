@@ -1,3 +1,4 @@
+// index.tsx
 import React, { useEffect, useRef, useState } from "react";
 import {
     View,
@@ -11,16 +12,16 @@ import { Picker } from "@react-native-picker/picker";
 import { useRouter, useLocalSearchParams } from "expo-router";
 
 export default function LoginScreen() {
-    const router = useRouter(); // Used to navigate between screens
-    const params = useLocalSearchParams(); // Access route parameters (like dishes from logout)
-    const [selectedUser, setSelectedUser] = useState("user"); // Track which user type is selected
-    const dishesFromLogout = params.dishes; // Retrieve any dishes passed from the logout action
+    const router = useRouter(); 
+    const params = useLocalSearchParams(); 
+    const [selectedUser, setSelectedUser] = useState("user"); 
+    const dishesFromLogout = params.dishes; 
 
     // Animation references
-    const fadeAnim = useRef(new Animated.Value(0)).current; // For screen fade-in/out animation
-    const scaleAnim = useRef(new Animated.Value(1)).current; // For button press scaling animation
+    const fadeAnim = useRef(new Animated.Value(0)).current; 
+    const scaleAnim = useRef(new Animated.Value(1)).current; 
 
-    // Run when the screen first loads
+    // FIX: Added 'fadeAnim' to the dependency array.
     useEffect(() => {
         // Fade in animation
         Animated.timing(fadeAnim, {
@@ -37,7 +38,7 @@ export default function LoginScreen() {
                 useNativeDriver: true,
             }).start();
         };
-    }, []);
+    }, [fadeAnim]); // <-- FIXED
 
     // Handle login button press
     const handleLogin = () => {
@@ -51,8 +52,8 @@ export default function LoginScreen() {
             router.replace({
                 pathname: "/HomeScreen",
                 params: {
-                    role: selectedUser, // Pass the selected role (user or Christoffel)
-                    dishes: dishesFromLogout, // Preserve dishes if coming from logout
+                    role: selectedUser, 
+                    dishes: dishesFromLogout, 
                 },
             });
         });
@@ -136,7 +137,7 @@ const styles = StyleSheet.create({
     },
     overlay: {
         ...StyleSheet.absoluteFillObject,
-        backgroundColor: "rgba(0,0,0,0.6)", // Semi-transparent overlay for readability
+        backgroundColor: "rgba(0,0,0,0.6)", 
     },
     container: {
         flex: 1,
@@ -170,7 +171,7 @@ const styles = StyleSheet.create({
         width: 250,
     },
     picker: {
-        color: "#000000ff", // Text color for picker items
+        color: "#000000ff", 
     },
     button: {
         backgroundColor: "#99110cff",

@@ -12,7 +12,7 @@ import {
 } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 import { useRouter, useLocalSearchParams } from "expo-router";
-import { Dish, Course } from "./types"; // Imported types
+import { Dish, Course } from "./types"; 
 
 // --- Animated Button Component ---
 const AnimatedButton: React.FC<{
@@ -69,13 +69,14 @@ export default function AddDishScreen() {
     const [price, setPrice] = useState("");
 
     const fadeAnim = useRef(new Animated.Value(0)).current;
+    // FIX: Added 'fadeAnim' to the dependency array.
     useEffect(() => {
         Animated.timing(fadeAnim, {
             toValue: 1,
             duration: 800,
             useNativeDriver: true,
         }).start();
-    }, []);
+    }, [fadeAnim]); // <-- FIXED
 
     // --- Function: Add Dish ---
     const handleAddDish = () => {

@@ -53,7 +53,11 @@ export default function HelpScreen() {
         }),
       ])
     ).start();
-  }, []);
+  }, [
+    fadeAnim,
+    slideAnim,
+    pulseAnim,
+  ]);
 
   // --- Button Animation Handlers ---
   const handlePressIn = () => {

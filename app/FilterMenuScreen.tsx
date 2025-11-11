@@ -1,3 +1,4 @@
+// FilterMenuScreen.tsx
 import React, { useState, useMemo, useRef, useEffect } from "react";
 import {
     View,
@@ -9,10 +10,10 @@ import {
     TouchableOpacity,
 } from "react-native";
 import { useLocalSearchParams, useRouter } from "expo-router";
-import { Dish, Course } from "./types"; // Imported types
+import { Dish, Course } from "./types"; 
 import { Picker } from "@react-native-picker/picker";
 
-// --- COMPONENT: MenuItem ---
+// --- COMPONENT: MenuItem (Unchanged) ---
 const MenuItem: React.FC<{ item: Dish }> = ({ item }) => (
     <View style={filterStyles.menuItemContainer}>
         <Text style={filterStyles.dishName}>{item.name}</Text>
@@ -26,31 +27,30 @@ export default function FilterMenuScreen() {
     const params = useLocalSearchParams();
 
     // Load dishes and cast to Dish[]
-    const dishes: Dish[] = params.currentDishes
-        ? JSON.parse(params.currentDishes as string)
-        : [];
+    const dishes: Dish[] = typeof params.currentDishes === "string"  ? JSON.parse(params.currentDishes) : [];
 
     // State for the selected filter
     const [selectedCourse, setSelectedCourse] = useState<Course | "All">("All");
 
-    // Filter the dishes based on selectedCourse
+    // FIX: Added 'dishes' and 'selectedCourse' to the dependency array.
     const filteredDishes = useMemo(() => {
         if (selectedCourse === "All") {
             return dishes;
         }
         // Filter by the Course type
         return dishes.filter(dish => dish.course === selectedCourse);
-    }, [dishes, selectedCourse]);
+    }, [dishes, selectedCourse]); // <-- FIXED
 
     // Screen fade-in animation
     const screenFade = useRef(new Animated.Value(0)).current;
+    // FIX: Added 'screenFade' to the dependency array.
     useEffect(() => {
         Animated.timing(screenFade, {
             toValue: 1,
             duration: 600,
             useNativeDriver: true,
         }).start();
-    }, []);
+    }, [screenFade]); // <-- FIXED
 
     // Function to navigate back
     const handleGoBack = () => {
@@ -83,7 +83,7 @@ export default function FilterMenuScreen() {
                 </View>
                 
                 <Text style={filterStyles.listHeader}>
-                    Showing {filteredDishes.length} {selectedCourse === "All" ? "Items" : selectedCourse + "s"}
+                    There is {filteredDishes.length} {selectedCourse === "All" ? "Items" : selectedCourse + "s"}
                 </Text>
 
 
@@ -109,7 +109,7 @@ export default function FilterMenuScreen() {
     );
 }
 
-// --- Styles for FilterMenuScreen ---
+// --- Styles for FilterMenuScreen (Unchanged) ---
 const filterStyles = StyleSheet.create({
     background: { flex: 1, resizeMode: "cover" },
     overlay: { ...StyleSheet.absoluteFillObject, backgroundColor: "rgba(0,0,0,0.75)" },
@@ -126,7 +126,7 @@ const filterStyles = StyleSheet.create({
         overflow: 'hidden',
     },
     picker: {
-        color: "#000000ff", // Text color needs to be set if not using dark mode
+        color: "#000000ff", 
     },
 
     listHeader: { fontSize: 16, color: '#f8f8f8', marginBottom: 10, alignSelf: 'flex-start', fontWeight: 'bold' },

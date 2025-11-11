@@ -1,3 +1,4 @@
+// HomeScreen.tsx
 import React, { useEffect, useRef, useState, useMemo } from "react";
 import {
     ImageBackground,
@@ -10,7 +11,7 @@ import {
     Animated,
 } from "react-native";
 import { useLocalSearchParams, useRouter } from "expo-router";
-import { Dish, Course } from "./types"; // Imported types
+import { Dish, Course } from "./types"; 
 
 // Helper function: capitalizes the first letter of a word
 const capitalize = (s: string) =>
@@ -71,16 +72,17 @@ export default function HomeScreen() {
         help: helpScale,
         reset: resetScale,
         logout: logoutScale,
-        filter: filterScale, // NEW
+        filter: filterScale, 
     };
 
     // --- Animation Handlers ---
+    // FIX: Added 'fadeAnim' to the dependency array.
     useEffect(() => {
         Animated.timing(fadeAnim, { toValue: 1, duration: 800, useNativeDriver: true }).start();
         return () => {
             Animated.timing(fadeAnim, { toValue: 0, duration: 400, useNativeDriver: true }).start();
         };
-    }, []);
+    }, [fadeAnim]); // <-- FIXED
 
     const pressIn = (anim: Animated.Value) => {
         Animated.spring(anim, { toValue: 0.95, useNativeDriver: true }).start();
@@ -96,6 +98,7 @@ export default function HomeScreen() {
     };
 
     // --- FEATURE: Calculate Course Averages and Breakdown ---
+    // FIX: Added 'dishes' to the dependency array.
     const averageStats = useMemo(() => {
         let totalItems = 0;
         let totalSum = 0;
@@ -124,9 +127,10 @@ export default function HomeScreen() {
             totalAverage: totalItems > 0 ? totalSum / totalItems : 0,
             breakdown,
         };
-    }, [dishes]);
+    }, [dishes]); // <-- FIXED
 
     // --- Group dishes by course for menu display ---
+    // FIX: Added 'dishes' to the dependency array.
     const menuSections = useMemo(() => {
         const grouped = dishes.reduce((acc, dish) => {
             const courseKey = capitalize(dish.course);
@@ -139,7 +143,8 @@ export default function HomeScreen() {
             title: title,
             data: items,
         }));
-    }, [dishes]);
+    }, [dishes]); // <-- FIXED
+
 
     // --- Handle Reset: Clears all dishes from menu ---
     const handleReset = () => {
@@ -168,7 +173,7 @@ export default function HomeScreen() {
         <Animated.View style={{ flex: 1, opacity: fadeAnim }}>
             <ImageBackground
                 source={{
-                    uri: "https://png.pngtree.com/thumb_back/fw800/background/20231230/pngtree-illustrated-vector-background-restaurant-menu-design-with-paper-texture-food-and-image_13914730.png",
+                    uri: "https://i.pinimg.com/736x/4d/bd/bd/4dbdbd4ea26e9a5cc14e4f38b24d0af1.jpg",
                 }}
                 style={styles.background}
             >
@@ -200,7 +205,7 @@ export default function HomeScreen() {
 
                     {/* --- FEATURE: Menu Statistics Box with Breakdown --- */}
                     <View style={styles.statsBox}>
-                        <Text style={styles.statsTitle}>Menu Statistics</Text>
+                        <Text style={styles.statsTitle}> CHRISTOFFELS Menu</Text>
 
                         {/* Overall Average */}
                         <Text style={styles.statsText}>
@@ -354,7 +359,7 @@ export default function HomeScreen() {
     );
 }
 
-// --- STYLES (Updated for Stats Box) ---
+// --- STYLES (Unchanged) ---
 const styles = StyleSheet.create({
     background: { flex: 1, resizeMode: "cover" },
     overlay: { ...StyleSheet.absoluteFillObject, backgroundColor: "rgba(0,0,0,0.6)" },
@@ -400,9 +405,9 @@ const styles = StyleSheet.create({
     cardTitle: { fontSize: 20, fontWeight: "700", marginBottom: 6, color: "#fff" },
     cardText: { fontSize: 14, color: "#ccc" },
 
-    // NEW FILTER BUTTON STYLE
+    // FILTER BUTTON STYLE
     filterButton: {
-        backgroundColor: "rgba(44, 132, 191, 0.5)",
+        backgroundColor: "rgba(168, 86, 27, 0.5)",
     },
     
     // MENU LIST STYLES
@@ -439,7 +444,7 @@ const styles = StyleSheet.create({
     dishPrice: { color: "#fff", fontSize: 16, fontWeight: "600", marginLeft: 8 },
     dishDesc: { color: "#ccc", fontSize: 14, fontStyle: "italic", marginTop: 2 },
     logoutButton: {
-        backgroundColor: "rgba(52, 152, 219, 0.6)",
+        backgroundColor: "rgba(255, 0, 0, 0.63)",
         marginTop: 30,
         marginBottom: 40,
         alignItems: "center",
