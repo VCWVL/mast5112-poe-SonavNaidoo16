@@ -202,3 +202,50 @@ Help:
 <img width="1560" height="972" alt="image" src="https://github.com/user-attachments/assets/2fa5efda-0564-4235-90cb-e5a54ccc0311" />
 <img width="1550" height="984" alt="image" src="https://github.com/user-attachments/assets/d02ba458-7e14-4feb-b036-99b43d4c163a" />
 <img width="1557" height="976" alt="image" src="https://github.com/user-attachments/assets/a8657648-288c-483d-8dd6-34ca6794afee" />
+
+##  Changelog
+
+### [1.1.0] - 2025-11-11 *(Part 2 Completion)*
+
+This release focuses on completing the required **Course Filtering** feature, improving overall application stability, and enhancing **menu interactivity** on the dedicated filter screen.
+
+---
+
+### Added
+
+#### **Menu Course Filtering Feature (MAST Requirement)**
+- Implemented full functionality on `FilterMenuScreen.tsx` to allow users to select a menu course (**Starter**, **Main**, **Dessert**, or **All**) and dynamically filter the displayed dishes.  
+- This satisfies the requirement for **"Selecting the course from a list."**
+
+#### **Menu Item Interactivity**
+- Dishes displayed on the `FilterMenuScreen` are now **interactive** (`TouchableOpacity`).  
+- Tapping a dish triggers an **Alert box** (`handleViewDetails`) displaying the dish’s full details:
+  - **Course**
+  - **Price**
+  - **Description**
+
+#### **Dynamic Picker Generation**
+- Introduced the `COURSES_LIST` and `FILTER_OPTIONS` arrays in `FilterMenuScreen.tsx` to **dynamically generate** all `<Picker.Item>` elements.  
+- This eliminates hardcoded values and ensures consistency with the `Course` type defined in `types.ts`.
+
+---
+
+###  Changed
+
+#### **FilterMenuScreen.tsx**
+- **Filtering Logic:** Refactored to use the `useMemo` hook for better performance — filtering only runs when the `dishes` array or `selectedCourse` state changes.  
+- **UI/UX Improvement:** Updated `<Picker.Item>` styling to use `#ffffff` (white) text for improved readability within the native Picker dialog.  
+- **Component Update:** Modified the `MenuItem` component to accept an `onPress` prop, enabling the new **detail pop-up interaction**.  
+- **Dependencies:** Confirmed correct imports for:
+  - `Picker` from `@react-native-picker/picker`
+  - `Alert` from `react-native`
+
+---
+
+### Removed
+- No components or features were explicitly removed in this release.  
+- Only refactors and enhancements were performed.
+
+---
+
+*End of Part 2 Completion Update*
