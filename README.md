@@ -199,3 +199,40 @@ This release focuses on completing the required **Course Filtering** feature, im
 
 ---
 
+## Pictures (Part 3): 
+
+## Login Page:
+
+<img width="1917" height="1070" alt="image" src="https://github.com/user-attachments/assets/350e8e89-9194-419a-a93f-24b37a8cab43" />
+
+## HomeScreen: 
+
+<img width="1919" height="1072" alt="image" src="https://github.com/user-attachments/assets/e4675f43-c14f-45a4-b54c-6d3ee153a7ba" />
+<img width="1912" height="1071" alt="image" src="https://github.com/user-attachments/assets/25eb1fcd-3d73-4923-8bbc-ed5764cdccf2" />
+<img width="1915" height="1079" alt="image" src="https://github.com/user-attachments/assets/5d00d5fb-f4ab-450e-9d2c-154c1e98f1d0" />
+
+
+## FilterSceen 
+
+<img width="1912" height="1071" alt="image" src="https://github.com/user-attachments/assets/c5b9ec80-3118-42ac-b0f5-b1542dd1b28f" />
+
+## AddDishScreen
+
+<img width="1913" height="1067" alt="image" src="https://github.com/user-attachments/assets/b0e0bfd6-69b1-4a10-9e46-5f5a7d9d55fe" />
+
+## RemoveDishScreen 
+
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/b17221c7-3252-4634-93a8-189dab8dc862" />
+
+## HelpScreen 
+
+<img width="1913" height="1079" alt="image" src="https://github.com/user-attachments/assets/3915aab8-0f24-4412-92ab-af4fc9826d5d" />
+
+## Users
+
+<img width="1918" height="1079" alt="image" src="https://github.com/user-attachments/assets/b1620208-eaba-4b6c-b8de-d0e42b36665a" />
+
+---
+## references
+--- 
+
