@@ -1,146 +1,99 @@
-Christoffel Menu App
-Overview
+## MAST5112 POE 
+---
 
-The Christoffel Menu App is a mobile application built using React Native and Expo Router. It provides an interactive restaurant menu management system that allows two types of users to access the app: Christoffel (Chef) and User.
-The Chef can add, view, and remove dishes, while regular users can browse available dishes organized by course. The app also includes animated transitions, an elegant interface, and a help page explaining how to use the system.
+# Christoffel Menu App
 
-Features
-1. Login System
+## Overview
 
-Users can select their role: Christoffel (Chef) or User.
+The Christoffel Menu App is a mobile application built using **React Native** and **Expo Router**.  
+It provides an interactive restaurant menu management system that allows two types of users to access the app: **Christoffel (Chef)** and **User**.  
+The Chef can add, view, and remove dishes, while regular users can browse available dishes organized by course.  
+The app also includes animated transitions, an elegant interface, and a help page explaining how to use the system.
 
-On login, the selected role determines access to menu management features.
+---
 
-Includes animated fade-in and button press effects for a smooth UI experience.
+## Features
 
-2. Menu Management (Chef)
+### 1. Login System
+- Users can select their role: **Christoffel (Chef)** or **User**.
+- On login, the selected role determines access to menu management features.
+- Includes animated fade-in and button press effects for a smooth UI experience.
 
-Add Dish: Enter name, description, course type, and price to add new dishes.
+### 2. Menu Management (Chef)
+- **Add Dish:** Enter name, description, course type, and price to add new dishes.
+- **Remove Dish:** Delete existing dishes from the menu.
+- **Reset Menu:** Clear the menu and start over.
+- Menu data is temporarily stored during runtime (resets when the app closes).
 
-Remove Dish: Delete existing dishes from the menu.
+### 3. Menu Viewing (User)
+- Browse all dishes grouped by **Starters**, **Mains**, and **Desserts**.
+- View details such as dish description and price.
+- Organized and readable interface optimized for mobile screens.
 
-Reset Menu: Clear the menu and start over.
+### 4. Help Page
+- Explains how both user types interact with the app.
+- Includes helpful notes and tips.
+- Utilizes smooth fade-in and slide-in animations for enhanced readability.
 
-Menu data is temporarily stored during runtime (resets when the app closes).
+### 5. Smooth Animations
+- Animated transitions on text, buttons, and views for improved user experience.
+- Fade-in and scale effects to highlight interaction feedback.
+- Reusable **AnimatedButton** component for consistent UI behavior.
 
-3. Menu Viewing (User)
+---
 
-Browse all dishes grouped by Starters, Mains, and Desserts.
+## Technologies Used
+- **React Native** – for cross-platform mobile UI development.
+- **Expo Router** – for easy and dynamic screen navigation.
+- **TypeScript** – for structured and type-safe React Native components.
+- **React Native Animated API** – for creating animations and transitions.
+- **@react-native-picker/picker** – for role selection in the login screen.
 
-View details such as dish description and price.
+---
 
-Organized and readable interface optimized for mobile screens.
-
-4. Help Page
-
-Explains how both user types interact with the app.
-
-Includes helpful notes and tips.
-
-Utilizes smooth fade-in and slide-in animations for enhanced readability.
-
-5. Smooth Animations
-
-Animated transitions on text, buttons, and views for improved user experience.
-
-Fade-in and scale effects to highlight interaction feedback.
-
-Reusable AnimatedButton component for consistent UI behavior.
-
-Technologies Used
-
-React Native – for cross-platform mobile UI development.
-
-Expo Router – for easy and dynamic screen navigation.
-
-TypeScript – for structured and type-safe React Native components.
-
-React Native Animated API – for creating animations and transitions.
-
-@react-native-picker/picker – for role selection in the login screen.
-
-File Structure
+## File Structure
 ChristoffelMenuApp/
+
 │
+
 ├── app/
-│   ├── LoginScreen.tsx          # Login interface for user and chef
-│   ├── HomeScreen.tsx           # Main page showing dishes and menu actions
-│   ├── RemoveDishScreen.tsx     # Page for removing dishes from the menu
-│   ├── HelpScreen.tsx           # Instructions and usage information
-│   ├── AddDishScreen.tsx        # (If included) Page for adding dishes
-│   └── assets/                  # Images or icons if applicable
+
+│ ├── LoginScreen.tsx # Login interface for user and chef
+
+│ ├── HomeScreen.tsx # Main page showing dishes and menu actions
+
+│ ├── RemoveDishScreen.tsx # Page for removing dishes from the menu
+
+│ ├── HelpScreen.tsx # Instructions and usage information
+
+│ ├── AddDishScreen.tsx # Page for adding dishes
+
+│ └── assets/ # Images 
+
 │
+
 ├── components/
-│   └── AnimatedButton.tsx       # Reusable animated button component
+
+│ └── AnimatedButton.tsx # Reusable animated button component
+
 │
+
 ├── package.json
+
 └── README.md
 
-Installation and Setup
 
-Clone the Repository
+---
 
+## Installation and Setup
+
+### Clone the Repository
 git clone https://github.com/VCWVL/mast5112-part-2-SonavNaidoo16/blob/master
-cd christoffel-menu-app
+cd menupoe
 
+---
 
-Install Dependencies
-
-npm install
-
-
-Run the App
-
-npx expo start
-
-
-This will open the Expo developer tools in your browser.
-You can run the app on an emulator or scan the QR code using the Expo Go app on your mobile device.
-
-How to Use
-For Christoffel (Chef)
-
-Log in as Christoffel (Chef).
-
-Add new dishes using the Add Dish option.
-
-View or remove dishes as needed.
-
-Reset the menu to clear all items.
-
-For Regular Users
-
-Log in as User.
-
-Browse the available dishes organized by course.
-
-View dish details such as description and price.
-
-Help Page
-
-Access the Help section for detailed instructions and usage tips.
-
-Design Notes
-
-The background images are selected to create an elegant restaurant-themed appearance.
-
-Colors use dark overlays for readability against light text.
-
-Layouts are responsive to different screen sizes using ScrollView and FlatList.
-
-Animations enhance interactivity without compromising performance.
-
-Limitations
-
-The app does not permanently store data (menu resets when the app closes).
-
-Currently intended for demonstration or prototype purposes only.
-
-Internet connection required for background images (hosted online).
-
-Future Enhancements
-
-Pictures:
+## Pictures (PART2):
 
 Login Page: 
 
@@ -202,3 +155,47 @@ Help:
 <img width="1560" height="972" alt="image" src="https://github.com/user-attachments/assets/2fa5efda-0564-4235-90cb-e5a54ccc0311" />
 <img width="1550" height="984" alt="image" src="https://github.com/user-attachments/assets/d02ba458-7e14-4feb-b036-99b43d4c163a" />
 <img width="1557" height="976" alt="image" src="https://github.com/user-attachments/assets/a8657648-288c-483d-8dd6-34ca6794afee" />
+
+##  Changelog
+
+This release focuses on completing the required **Course Filtering** feature, improving overall application stability, and enhancing **menu interactivity** on the dedicated filter screen.
+
+---
+
+### Added
+
+#### **Menu Course Filtering Feature **
+- Implemented full functionality on `FilterMenuScreen.tsx` to allow users to select a menu course (**Starter**, **Main**, **Dessert**, or **All**) and dynamically filter the displayed dishes.  
+- This satisfies the requirement for **"Selecting the course from a list."**
+
+#### **Menu Item Interactivity**
+- Dishes displayed on the `FilterMenuScreen` are now **interactive** (`TouchableOpacity`).  
+- Tapping a dish triggers an **Alert box** (`handleViewDetails`) displaying the dish’s full details:
+  - **Course**
+  - **Price**
+  - **Description**
+
+#### **Dynamic Picker Generation**
+- Introduced the `COURSES_LIST` and `FILTER_OPTIONS` arrays in `FilterMenuScreen.tsx` to **dynamically generate** all `<Picker.Item>` elements.  
+- This eliminates hardcoded values and ensures consistency with the `Course` type defined in `types.ts`.
+
+---
+
+###  Changed
+
+#### **FilterMenuScreen.tsx**
+- **Filtering Logic:** Refactored to use the `useMemo` hook for better performance — filtering only runs when the `dishes` array or `selectedCourse` state changes.  
+- **UI/UX Improvement:** Updated `<Picker.Item>` styling to use `#ffffff` (white) text for improved readability within the native Picker dialog.  
+- **Component Update:** Modified the `MenuItem` component to accept an `onPress` prop, enabling the new **detail pop-up interaction**.  
+- **Dependencies:** Confirmed correct imports for:
+  - `Picker` from `@react-native-picker/picker`
+  - `Alert` from `react-native`
+
+---
+
+### Removed
+- No components or features were explicitly removed in this release.  
+- Only refactors and enhancements were performed.
+
+---
+
