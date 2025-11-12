@@ -232,7 +232,23 @@ This release focuses on completing the required **Course Filtering** feature, im
 
 <img width="1918" height="1079" alt="image" src="https://github.com/user-attachments/assets/b1620208-eaba-4b6c-b8de-d0e42b36665a" />
 
----
-## references
 --- 
+## references
 
+1. Freepik, 2025. Herbs and condiments on black stone background [online]. Available at: https://img.freepik.com/premium-photo/herbs-condiments-black-stone-background_266870-11940.jpg (Accessed: 26 October 2025).
+   
+2. Pinterest, 2025. Abstract image – 4dbdbd4ea26e9a5cc14e4f38b24d0af1 [Online]. Available at: https://i.pinimg.com/736x/4d/bd/bd/4dbdbd4ea26e9a5cc14e4f38b24d0af1.jpg (Accessed: 26 October 2025).
+   
+3. Gippity Kitchen, 2025. Simmering technique banner image [Online]. Available at: https://gippity.kitchen/techniques/simmer/banner_hu251e0ce9f36ecc9114ebf5b9115e4d0c_1121218_1280x0_resize_q75_bgffffff_lanczos_2.jpg (Accessed: 26 October 2025).
+
+4. Freepik, 2025. Abstract blur of coffee shop café with vintage effect filter [Online]. Available at: https://img.freepik.com/premium-photo/abstract-blur-coffee-shop-cafe-restaurant-background-vintage-effect-filter_1339-159934.jpg (Accessed: 26 October 2025).
+
+5. Unsplash, 2025. Photo of herbs and spices on dark background [onlin]. Available at: https://images.unsplash.com/photo-1556910103-1c02745aae4d (Accessed: 26 October 2025)
+
+6. Freepik, 2025. Skillet on fire over stove top [Online]. Available at: https://img.freepik.com/premium-photo/skillet-fire-stove-top_961875-112831.jpg (Accessed: 26 October 2025)
+
+7. Pinterest, 2025. Image of abstract design.[online] Available at: <https://i.pinimg.com/474x/04/ac/09/04ac09a6583bff1e7ddf90c305b2de67.jpg> (Accessed: 1 September 2025)
+
+8. Dreamstime 2025. Menu restaurant hand-drawn vegetables on old paper [Image]. Available at: <https://thumbs.dreamstime.com/b/menu-restaurant-hand-drawn vegetables-old-paper-b-menu-restaurant-hand-drawn-vegetablesold-paper111775901.jpg > (Accessed: 2 September 2025).
+
+--- 
