@@ -1,4 +1,3 @@
-// HomeScreen.tsx
 import React, { useEffect, useRef, useState, useMemo } from "react";
 import {
     ImageBackground,
@@ -17,7 +16,7 @@ import { Dish, Course } from "./types";
 const capitalize = (s: string) =>
     s.charAt(0).toUpperCase() + s.slice(1).toLowerCase();
 
-// --- COMPONENT: MenuItem ---
+// MenuItem
 const MenuItem: React.FC<{ item: Dish }> = ({ item }) => (
     <View style={styles.menuItemContainer}>
         <View style={styles.nameAndPriceRow}>
@@ -31,7 +30,7 @@ const MenuItem: React.FC<{ item: Dish }> = ({ item }) => (
     </View>
 );
 
-// --- COMPONENT: CourseSection ---
+// CourseSection component to group dishes by course
 const CourseSection: React.FC<{ title: Course | string; dishes: Dish[] }> = ({
     title,
     dishes,
@@ -44,7 +43,7 @@ const CourseSection: React.FC<{ title: Course | string; dishes: Dish[] }> = ({
     </View>
 );
 
-// --- MAIN COMPONENT: HomeScreen ---
+// Main HomeScreen Component
 export default function HomeScreen() {
     const router = useRouter();
     const params = useLocalSearchParams();
@@ -56,7 +55,7 @@ export default function HomeScreen() {
     // State to store list of dishes
     const [dishes, setDishes] = useState<Dish[]>(initialDishes);
 
-    // --- Animation Refs ---
+    // Animation Refs
     const fadeAnim = useRef(new Animated.Value(0)).current;
     const addScale = useRef(new Animated.Value(1)).current;
     const removeScale = useRef(new Animated.Value(1)).current;
@@ -75,14 +74,14 @@ export default function HomeScreen() {
         filter: filterScale, 
     };
 
-    // --- Animation Handlers ---
-    // FIX: Added 'fadeAnim' to the dependency array.
+    // Animation Handlers 
+    // Added fadeAnim to the dependency array.
     useEffect(() => {
         Animated.timing(fadeAnim, { toValue: 1, duration: 800, useNativeDriver: true }).start();
         return () => {
             Animated.timing(fadeAnim, { toValue: 0, duration: 400, useNativeDriver: true }).start();
         };
-    }, [fadeAnim]); // <-- FIXED
+    }, [fadeAnim]); 
 
     const pressIn = (anim: Animated.Value) => {
         Animated.spring(anim, { toValue: 0.95, useNativeDriver: true }).start();
@@ -97,8 +96,8 @@ export default function HomeScreen() {
         }).start();
     };
 
-    // --- FEATURE: Calculate Course Averages and Breakdown ---
-    // FIX: Added 'dishes' to the dependency array.
+    // FEATURE: Calculate Course Averages and Breakdown 
+    // Added dishes to the dependency array
     const averageStats = useMemo(() => {
         let totalItems = 0;
         let totalSum = 0;
@@ -127,10 +126,10 @@ export default function HomeScreen() {
             totalAverage: totalItems > 0 ? totalSum / totalItems : 0,
             breakdown,
         };
-    }, [dishes]); // <-- FIXED
+    }, [dishes]); 
 
-    // --- Group dishes by course for menu display ---
-    // FIX: Added 'dishes' to the dependency array.
+    // Group dishes by course for menu display
+    // Added dishes to the dependency array
     const menuSections = useMemo(() => {
         const grouped = dishes.reduce((acc, dish) => {
             const courseKey = capitalize(dish.course);
@@ -143,10 +142,10 @@ export default function HomeScreen() {
             title: title,
             data: items,
         }));
-    }, [dishes]); // <-- FIXED
+    }, [dishes]); 
 
 
-    // --- Handle Reset: Clears all dishes from menu ---
+    // Handle Reset: Clears all dishes from menu
     const handleReset = () => {
         Alert.alert("Reset Menu", "Are you sure you want to clear all dishes?", [
             { text: "Cancel", style: "cancel" },
@@ -154,7 +153,7 @@ export default function HomeScreen() {
         ]);
     };
 
-    // --- Handle Logout: Fades out then navigates back to login ---
+    // Handle Logout: Fades out then navigates back to login
     const handleLogout = () => {
         Animated.timing(fadeAnim, {
             toValue: 0,
@@ -168,7 +167,7 @@ export default function HomeScreen() {
         });
     };
 
-    // --- Render Screen UI ---
+    // Render Screen UI
     return (
         <Animated.View style={{ flex: 1, opacity: fadeAnim }}>
             <ImageBackground
@@ -203,7 +202,7 @@ export default function HomeScreen() {
                         </View>
                     )}
 
-                    {/* --- FEATURE: Menu Statistics Box with Breakdown --- */}
+                    {/* FEATURE: Menu Statistics Box with Breakdown */}
                     <View style={styles.statsBox}>
                         <Text style={styles.statsTitle}> CHRISTOFFELS Menu</Text>
 
@@ -232,9 +231,9 @@ export default function HomeScreen() {
                     </View>
 
 
-                    {/* --- BUTTONS --- */}
+                    {/*  BUTTONS */}
 
-                    {/* FEATURE: Filter Menu Button (Visible to all users) */}
+                    {/* FEATURE: Filter Menu Button */}
                     <TouchableWithoutFeedback
                         onPressIn={() => pressIn(buttonScales.filter)}
                         onPressOut={() => pressOut(buttonScales.filter)}
@@ -321,7 +320,7 @@ export default function HomeScreen() {
                         </>
                     )}
 
-                    {/* Help Button (Visible to all) */}
+                    {/* Help Button */}
                     <TouchableWithoutFeedback
                         onPressIn={() => pressIn(buttonScales.help)}
                         onPressOut={() => pressOut(buttonScales.help)}
@@ -359,7 +358,7 @@ export default function HomeScreen() {
     );
 }
 
-// --- STYLES (Unchanged) ---
+// STYLES
 const styles = StyleSheet.create({
     background: { flex: 1, resizeMode: "cover" },
     overlay: { ...StyleSheet.absoluteFillObject, backgroundColor: "rgba(0,0,0,0.6)" },
@@ -367,7 +366,7 @@ const styles = StyleSheet.create({
     title: { fontSize: 32, fontWeight: "bold", textAlign: "center", marginBottom: 8, color: "#fff" },
     subtitle: { fontSize: 16, textAlign: "center", marginBottom: 20, color: "#ddd" },
     
-    // NEW/UPDATED STATS STYLES
+    // STATS STYLES
     statsBox: {
         backgroundColor: "rgba(255,255,255,0.15)",
         borderRadius: 15,

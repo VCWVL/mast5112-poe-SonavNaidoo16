@@ -1,4 +1,3 @@
-// index.tsx
 import React, { useEffect, useRef, useState } from "react";
 import {
     View,
@@ -21,7 +20,7 @@ export default function LoginScreen() {
     const fadeAnim = useRef(new Animated.Value(0)).current; 
     const scaleAnim = useRef(new Animated.Value(1)).current; 
 
-    // FIX: Added 'fadeAnim' to the dependency array.
+    // Added fadeAnim to the dependency array
     useEffect(() => {
         // Fade in animation
         Animated.timing(fadeAnim, {
@@ -30,7 +29,7 @@ export default function LoginScreen() {
             useNativeDriver: true,
         }).start();
 
-        // Fade out when leaving the screen (cleanup)
+        // Fade out when leaving the screen 
         return () => {
             Animated.timing(fadeAnim, {
                 toValue: 0,
@@ -38,7 +37,7 @@ export default function LoginScreen() {
                 useNativeDriver: true,
             }).start();
         };
-    }, [fadeAnim]); // <-- FIXED
+    }, [fadeAnim]); 
 
     // Handle login button press
     const handleLogin = () => {
@@ -59,7 +58,7 @@ export default function LoginScreen() {
         });
     };
 
-    // When button is pressed down (scale slightly smaller)
+    // When button is pressed down 
     const handlePressIn = () => {
         Animated.spring(scaleAnim, {
             toValue: 0.95,
@@ -67,7 +66,7 @@ export default function LoginScreen() {
         }).start();
     };
 
-    // When button is released (scale back to normal)
+    // When button is released 
     const handlePressOut = () => {
         Animated.spring(scaleAnim, {
             toValue: 1,
@@ -125,7 +124,7 @@ export default function LoginScreen() {
     );
 }
 
-// --- Styling Section ---
+// Styling Section
 const styles = StyleSheet.create({
     fadeContainer: {
         flex: 1,

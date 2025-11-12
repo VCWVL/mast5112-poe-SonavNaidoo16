@@ -1,4 +1,3 @@
-// RemoveDishScreen.tsx
 import React, { useState, useEffect, useRef } from "react";
 import {
     View,
@@ -12,7 +11,7 @@ import {
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { Dish } from "./types"; 
 
-// --- Animated Button Component (Unchanged) ---
+// Animated Button Component 
 const AnimatedButton: React.FC<{
     onPress: () => void;
     title: string;
@@ -50,21 +49,21 @@ const AnimatedButton: React.FC<{
     );
 };
 
-// --- Component to display each dish item with a remove button ---
+// Component to display each dish item with a remove button 
 const RemovableMenuItem: React.FC<{
     dish: Dish; 
     onRemove: (id: string) => void;
 }> = ({ dish, onRemove }) => {
     const fadeAnim = useRef(new Animated.Value(0)).current;
 
-    // FIX: Added 'fadeAnim' to the dependency array.
+    // fadeAnim to the dependency array
     useEffect(() => {
         Animated.timing(fadeAnim, {
             toValue: 1,
             duration: 400,
             useNativeDriver: true,
         }).start();
-    }, [fadeAnim]); // <-- FIXED
+    }, [fadeAnim]); 
 
     return (
         <Animated.View style={[removeStyles.menuItemContainer, { opacity: fadeAnim }]}>
@@ -92,7 +91,7 @@ const RemovableMenuItem: React.FC<{
     );
 };
 
-// --- Main Screen Component for Removing Dishes ---
+// Main Screen Component for Removing Dishes
 export default function RemoveDishScreen() {
     const router = useRouter();
     const params = useLocalSearchParams();
@@ -106,14 +105,14 @@ export default function RemoveDishScreen() {
 
     // Screen fade-in animation on mount
     const screenFade = useRef(new Animated.Value(0)).current;
-    // FIX: Added 'screenFade' to the dependency array.
+    // Added screenFade to the dependency array.
     useEffect(() => {
         Animated.timing(screenFade, {
             toValue: 1,
             duration: 800,
             useNativeDriver: true,
         }).start();
-    }, [screenFade]); // <-- FIXED
+    }, [screenFade]); 
 
     // Function to remove a dish from the list
     const handleRemoveDish = (idToRemove: string) => {
@@ -135,7 +134,7 @@ export default function RemoveDishScreen() {
     return (
         <ImageBackground
             source={{
-                uri: "https://i.pinimg.com/originals/3a/00/a8/3a00a8bc91fffad7005fa5f8373b42b7.jpg",
+                uri: "https://img.freepik.com/premium-photo/skillet-fire-stove-top_961875-112831.jpg",
             }}
             style={removeStyles.background}
         >
@@ -180,7 +179,7 @@ export default function RemoveDishScreen() {
     );
 }
 
-// --- Styles for the RemoveDishScreen and Components (Unchanged) ---
+// Styles for the RemoveDishScreen and Components 
 const removeStyles = StyleSheet.create({
     background: { flex: 1, resizeMode: "cover" },
     overlay: { ...StyleSheet.absoluteFillObject, backgroundColor: "rgba(0,0,0,0.7)" },
@@ -198,7 +197,7 @@ const removeStyles = StyleSheet.create({
         fontWeight: "900",
         textAlign: "center",
         marginBottom: 10,
-        color: "#1cdf4dce",
+        color: "#bf2c2cff",
     },
     subtitle: { fontSize: 17, textAlign: "center", marginBottom: 30, color: "#ccc" },
 
@@ -253,7 +252,7 @@ const removeStyles = StyleSheet.create({
 
     // Back button styling
     backButton: {
-        backgroundColor: "#1cdf4dce",
+        backgroundColor: "#bf2c2cff",
         borderRadius: 15,
         padding: 18,
         width: "100%",

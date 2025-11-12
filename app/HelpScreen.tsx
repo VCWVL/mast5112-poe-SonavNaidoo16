@@ -15,19 +15,19 @@ import { useRouter } from "expo-router";
 export default function HelpScreen() {
   const router = useRouter(); // Used for navigation between screens
 
-  // --- Animation Values ---
+  // Animation Values 
   const fadeAnim = useRef(new Animated.Value(0)).current; // Controls fade-in effect
   const slideAnim = useRef(new Animated.Value(50)).current; // Controls slide-up motion
   const pulseAnim = useRef(new Animated.Value(1)).current; // Controls pulsing title effect
   const buttonScale = useRef(new Animated.Value(1)).current; // Controls button press scaling
 
-  // --- Run animations when component mounts ---
+  // Run animations when component mounts 
   useEffect(() => {
     // Fade-in and slide-up animation runs in parallel
     Animated.parallel([
       Animated.timing(fadeAnim, {
         toValue: 1,
-        duration: 1000, // Animation duration (1 second)
+        duration: 1000, // Animation duration 
         useNativeDriver: true,
       }),
       Animated.timing(slideAnim, {
@@ -59,7 +59,7 @@ export default function HelpScreen() {
     pulseAnim,
   ]);
 
-  // --- Button Animation Handlers ---
+  // Button Animation Handlers
   const handlePressIn = () => {
     // Shrinks button slightly when pressed
     Animated.spring(buttonScale, {
@@ -78,7 +78,7 @@ export default function HelpScreen() {
     }).start(() => router.back());
   };
 
-  // --- Screen Layout ---
+  // Screen Layout
   return (
     <ImageBackground
       source={{
@@ -116,7 +116,7 @@ export default function HelpScreen() {
           How to use the Christoffel Menu App
         </Animated.Text>
 
-        {/* --- Section for Chef (Christoffel) --- */}
+        {/* Section for Chef (Christoffel) */}
         <Animated.View
           style={[
             styles.section,
@@ -152,7 +152,7 @@ export default function HelpScreen() {
           </Text>
         </Animated.View>
 
-        {/* --- Section for App Users --- */}
+        {/* Section for App Users */}
         <Animated.View
           style={[
             styles.section,
@@ -180,7 +180,7 @@ export default function HelpScreen() {
           </Text>
         </Animated.View>
 
-        {/* --- General Tips Section --- */}
+        {/* General Tips Section */}
         <Animated.View
           style={[
             styles.section,
@@ -202,7 +202,7 @@ export default function HelpScreen() {
           </Text>
         </Animated.View>
 
-        {/* --- Back Button with animation --- */}
+        {/* Back Button with animation */}
         <Animated.View
           style={[
             styles.buttonWrapper,
@@ -222,7 +222,7 @@ export default function HelpScreen() {
   );
 }
 
-// --- Styles ---
+// Styles
 const styles = StyleSheet.create({
   background: { flex: 1, resizeMode: "cover" }, // Full-screen background
   overlay: {

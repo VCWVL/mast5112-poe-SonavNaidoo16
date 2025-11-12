@@ -1,4 +1,3 @@
-// FilterMenuScreen.tsx
 import React, { useState, useMemo, useRef, useEffect } from "react";
 import {
     View,
@@ -13,7 +12,7 @@ import { useLocalSearchParams, useRouter } from "expo-router";
 import { Dish, Course } from "./types"; 
 import { Picker } from "@react-native-picker/picker";
 
-// --- COMPONENT: MenuItem (Unchanged) ---
+// MenuItem component for rendering each dish
 const MenuItem: React.FC<{ item: Dish }> = ({ item }) => (
     <View style={filterStyles.menuItemContainer}>
         <Text style={filterStyles.dishName}>{item.name}</Text>
@@ -21,36 +20,36 @@ const MenuItem: React.FC<{ item: Dish }> = ({ item }) => (
     </View>
 );
 
-// --- MAIN COMPONENT: FilterMenuScreen ---
+// FilterMenuScreen 
 export default function FilterMenuScreen() {
     const router = useRouter();
     const params = useLocalSearchParams();
 
-    // Load dishes and cast to Dish[]
+    // Load dishes and cast to Dish
     const dishes: Dish[] = typeof params.currentDishes === "string"  ? JSON.parse(params.currentDishes) : [];
 
     // State for the selected filter
     const [selectedCourse, setSelectedCourse] = useState<Course | "All">("All");
 
-    // FIX: Added 'dishes' and 'selectedCourse' to the dependency array.
+    // Added dishes and selectedCourse to the dependency array.
     const filteredDishes = useMemo(() => {
         if (selectedCourse === "All") {
             return dishes;
         }
         // Filter by the Course type
         return dishes.filter(dish => dish.course === selectedCourse);
-    }, [dishes, selectedCourse]); // <-- FIXED
+    }, [dishes, selectedCourse]); 
 
     // Screen fade-in animation
     const screenFade = useRef(new Animated.Value(0)).current;
-    // FIX: Added 'screenFade' to the dependency array.
+
     useEffect(() => {
         Animated.timing(screenFade, {
             toValue: 1,
             duration: 600,
             useNativeDriver: true,
         }).start();
-    }, [screenFade]); // <-- FIXED
+    }, [screenFade]); 
 
     // Function to navigate back
     const handleGoBack = () => {
@@ -59,7 +58,7 @@ export default function FilterMenuScreen() {
 
     return (
         <ImageBackground
-            source={{ uri: "https://images.unsplash.com/photo-1543883011-37f90f2b38f8" }}
+            source={{ uri: "https://img.freepik.com/premium-photo/abstract-blur-coffee-shop-cafe-restaurant-background-vintage-effect-filter_1339-159934.jpg" }}
             style={filterStyles.background}
         >
             <View style={filterStyles.overlay} />
@@ -109,7 +108,7 @@ export default function FilterMenuScreen() {
     );
 }
 
-// --- Styles for FilterMenuScreen (Unchanged) ---
+// Styles for FilterMenuScreen
 const filterStyles = StyleSheet.create({
     background: { flex: 1, resizeMode: "cover" },
     overlay: { ...StyleSheet.absoluteFillObject, backgroundColor: "rgba(0,0,0,0.75)" },
@@ -121,12 +120,12 @@ const filterStyles = StyleSheet.create({
         backgroundColor: "rgba(255,255,255,0.1)",
         borderRadius: 10,
         borderWidth: 1,
-        borderColor: "#f8f8f8",
+        borderColor: "#bf2c2cff",
         marginBottom: 20,
         overflow: 'hidden',
     },
     picker: {
-        color: "#000000ff", 
+        color: "#ffffffff", 
     },
 
     listHeader: { fontSize: 16, color: '#f8f8f8', marginBottom: 10, alignSelf: 'flex-start', fontWeight: 'bold' },
@@ -139,18 +138,18 @@ const filterStyles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center",
-        backgroundColor: "rgba(255, 255, 255, 0.1)",
+        backgroundColor: "#0000003a",
         borderRadius: 8,
         padding: 15,
         marginBottom: 10,
         borderLeftWidth: 4,
-        borderLeftColor: "#2c84bfff",
+        borderLeftColor: "#bf2c2cff",
     },
     dishName: { color: "#fff", fontWeight: "600", fontSize: 16 },
     dishPrice: { color: "#aaffaa", fontWeight: "bold", fontSize: 16 },
 
     backButton: {
-        backgroundColor: "#2c84bfff",
+        backgroundColor: "#bf2c2cff",
         borderRadius: 10,
         padding: 15,
         width: "100%",

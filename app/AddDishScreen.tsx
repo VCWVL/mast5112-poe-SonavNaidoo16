@@ -1,4 +1,3 @@
-// AddDishScreen.tsx
 import React, { useState, useEffect, useRef } from "react";
 import {
     View,
@@ -14,7 +13,7 @@ import { Picker } from "@react-native-picker/picker";
 import { useRouter, useLocalSearchParams } from "expo-router";
 import { Dish, Course } from "./types"; 
 
-// --- Animated Button Component ---
+// Animated Button Component
 const AnimatedButton: React.FC<{
     title: string;
     onPress: () => void;
@@ -52,7 +51,7 @@ const AnimatedButton: React.FC<{
     );
 };
 
-// --- Main Screen Component: AddDishScreen ---
+// Main Screen Component: AddDishScreen 
 export default function AddDishScreen() {
     const router = useRouter();
     const params = useLocalSearchParams();
@@ -69,16 +68,17 @@ export default function AddDishScreen() {
     const [price, setPrice] = useState("");
 
     const fadeAnim = useRef(new Animated.Value(0)).current;
-    // FIX: Added 'fadeAnim' to the dependency array.
+
+    // Added 'fadeAnim' to the dependency array.
     useEffect(() => {
         Animated.timing(fadeAnim, {
             toValue: 1,
             duration: 800,
             useNativeDriver: true,
         }).start();
-    }, [fadeAnim]); // <-- FIXED
+    }, [fadeAnim]); 
 
-    // --- Function: Add Dish ---
+    // Function: Add Dish
     const handleAddDish = () => {
         if (!name || !description || !course || !price) {
             Alert.alert("Error", "Please fill in all fields");
@@ -115,11 +115,12 @@ export default function AddDishScreen() {
         });
     };
 
-    // --- UI Section ---
+    // UI Section
     return (
+        // Background Image with Overlay 
         <ImageBackground
             source={{
-                uri: "https://img.freepik.com/premium-photo/food-banner-vegetables-spices-top-view-free-copy-space_187166-5816.jpg",
+                uri: "https://gippity.kitchen/techniques/simmer/banner_hu251e0ce9f36ecc9114ebf5b9115e4d0c_1121218_1280x0_resize_q75_bgffffff_lanczos_2.jpg",
             }}
             style={styles.background}
         >
@@ -178,7 +179,7 @@ export default function AddDishScreen() {
     );
 }
 
-// --- Styling Section ---
+// Styling Section 
 const styles = StyleSheet.create({
     background: { flex: 1, resizeMode: "cover", justifyContent: "center" },
     overlay: { ...StyleSheet.absoluteFillObject, backgroundColor: "rgba(0,0,0,0.6)" },
@@ -187,9 +188,9 @@ const styles = StyleSheet.create({
     input: {
         width: "100%",
         borderWidth: 1,
-        borderColor: "#2c84bfff",
+        borderColor: "#bf2c2cff",
         backgroundColor: "rgba(255,255,255,0.1)",
-        color: "#fff",
+        color: "#ffffffff",
         padding: 12,
         borderRadius: 10,
         marginBottom: 15,
@@ -197,15 +198,15 @@ const styles = StyleSheet.create({
     pickerContainer: {
         width: "100%",
         borderWidth: 1,
-        borderColor: "#2c84bfff",
-        backgroundColor: "rgba(255,255,255,0.1)",
+        borderColor: "#bf2c2cff",
+        backgroundColor: "rgba(250, 245, 245, 0.1)",
         borderRadius: 10,
         marginBottom: 15,
         overflow: "hidden",
     },
-    picker: { color: "#000000ff" },
+    picker: { color: "#ffffffff" },
     button: {
-        backgroundColor: "#2c84bfff",
+        backgroundColor: "#bf2c2cff",
         paddingVertical: 14,
         paddingHorizontal: 80,
         borderRadius: 25,
